@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.jpg" type="images/x-icon">
+    <title>Set</title>
+</head>
+<body>
+    <div id="startOverlay">
+        <div class="buttons">
+            <button class="button" id="1player">1 Player</button>
+            <button class="button" id="2player">2 Player</button>
+            <button class="button" id="3player">3 Player</button>
+            <button class="button" id="4player">4 Player</button>
+        </div>
+    </div>
+    <div id="playerButtons">
+        <div id="part1">
+            <button id="player1">Player 1</button>
+            <p id="player1ScoreText">Score: <span id="player1Score">0</span></p>
+        </div>
+        <div id="part2">
+            <button id="player2">Player 2</button>
+            <p id="player2ScoreText">Score: <span id="player2Score">0</span></p>
+        </div>
+        <div id="part3">
+            <button id="player3">Player 3</button>
+            <p id="player3ScoreText">Score: <span id="player3Score">0</span></p>
+        </div>
+        <div id="part4">
+            <button id="player4">Player 4</button>
+            <p id="player4ScoreText">Score: <span id="player4Score">0</span></p>
+        </div>
+    </div>
+    <div id="gameOverlay">
+        <p id="title">Look for sets</p>
+        <div id="cardContainer">
+            <div class="card" id="card0">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img0layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img0layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img0layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img0layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img0layer2">
+                </div>
+            </div>
+            <div class="card" id="card1">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img1layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img1layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img1layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img1layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img1layer2">
+                </div>
+            </div>
+            <div class="card" id="card2">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img2layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img2layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img2layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img2layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img2layer2">
+                </div>
+            </div>
+            <div class="card" id="card3">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img3layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img3layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img3layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img3layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img3layer2">
+                </div>
+            </div>
+            <div class="card" id="card4">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img4layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img4layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img4layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img4layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img4layer2">
+                </div>
+            </div>
+            <div class="card" id="card5">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img5layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img5layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img5layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img5layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img5layer2">
+                </div>
+            </div>
+            <div class="card" id="card6">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img6layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img6layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img6layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img6layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img6layer2">
+                </div>
+            </div>
+            <div class="card" id="card7">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img7layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img7layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img7layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img7layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img7layer2">
+                </div>
+            </div>
+            <div class="card" id="card8">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img8layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img8layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img8layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img8layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img8layer2">
+                </div>
+            </div>
+            <div class="card" id="card9">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img9layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img9layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img9layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img9layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img9layer2">
+                </div>
+            </div>
+            <div class="card" id="card10">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img10layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img10layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img10layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img10layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img10layer2">
+                </div>
+            </div>
+            <div class="card" id="card11">
+                <div class="layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img11layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img11layer3">
+                    <img src="images/blank.jpg" alt="blank" class="img11layer3">
+                </div>
+                <div class="layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img11layer2">
+                    <img src="images/blank.jpg" alt="blank" class="img11layer2">
+                </div>
+            </div>
+        </div>
+        <div class="sideBar">
+            <button id="add3Cards">Add 3</button>
+            <button id="hint">Hint</button>
+            <button id="showAmount">Total Sets</button>
+        </div>
+        <div id="endOverlay">
+            <h1>Game Over</h1>
+            <div class="center">
+                <h3 id="winner"></h3>
+                <h4 id="score1"></h4>
+                <h4 id="score2"></h4>
+                <h4 id="score3"></h4>
+                <h4 id="score4"></h4>
+                <button onclick="restart()">Restart</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
