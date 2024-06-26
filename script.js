@@ -516,7 +516,7 @@ function findSets() {
     for (let s = 0; s < boardCards.length - 1; s++) {
         for (let e = 0; e < boardCards.length; e++) {
             for (let t = 0; t < boardCards.length; t++) {
-                if (s !== e && t !== s && e !== t && s - 1 < e && e - 1 < t) {
+                if (s !== e && t !== s && e !== t && s < e < t) {
                     let colour = false;
                     let fill = false;
                     let amount = false;
