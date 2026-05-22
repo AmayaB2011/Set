@@ -97,17 +97,6 @@ for (let i = 0; i < 12; i++) {
 }
 findSets();
 
-function sayMistake(place1, place2, place3) {
-    if (place1 == place2 && place2 !== place3) {
-        document.getElementById('title').innerText = 'So close but you have two ' + place1 + 's and one ' + place3;
-    } else if (place3 == place2 && place2 !== place1) {
-        document.getElementById('title').innerText = 'So close but you have two ' + place2 + 's and one ' + place1;
-    } else if (place1 == place3 && place1 !== place2) {
-        document.getElementById('title').innerText = 'So close but you have two ' + place1 + 's and one ' + place2;
-    }
-    document.querySelectorAll('.card').forEach(card => card.style.border = '2px solid #fff');
-}
-
 function updateImages(cardNumber, place) {
     if (cardNumber.amount == '2') {
         document.getElementsByClassName(`img${place}layer2`)[0].src = `images/${cardNumber.colour}/${cardNumber.shape}/${cardNumber.fill}.jpg`;
@@ -130,11 +119,23 @@ function updateImages(cardNumber, place) {
     }
 }
 
-function check(type) {
-    return ((selectedCards[0][type] == selectedCards[1][type] && selectedCards[1][type] == selectedCards[2][type]) || selectedCards[0][type] !== selectedCards[1][type] && selectedCards[1][type] !== selectedCards[2][type] && selectedCards[0][type] !== selectedCards[2][type]);
-}
-
 function clickCard(i) {
+    function sayMistake(place1, place2, place3) {
+        if (place1 == place2 && place2 !== place3) {
+            document.getElementById('title').innerText = 'So close but you have two ' + place1 + 's and one ' + place3;
+        } else if (place3 == place2 && place2 !== place1) {
+            document.getElementById('title').innerText = 'So close but you have two ' + place2 + 's and one ' + place1;
+        } else if (place1 == place3 && place1 !== place2) {
+            document.getElementById('title').innerText = 'So close but you have two ' + place1 + 's and one ' + place2;
+        }
+        fitText();
+        document.querySelectorAll('.card').forEach(card => card.style.border = '2px solid #fff');
+    }
+
+    function check(type) {
+        return ((selectedCards[0][type] == selectedCards[1][type] && selectedCards[1][type] == selectedCards[2][type]) || selectedCards[0][type] !== selectedCards[1][type] && selectedCards[1][type] !== selectedCards[2][type] && selectedCards[0][type] !== selectedCards[2][type]);
+    }
+    
     if (selectedCards.length <= 3 && document.getElementById(`card${i}`).style.opacity !== '0') {
         if (!selectedCards.includes(boardCards[i])) {
             document.getElementById('card' + i).style.border = `2px solid #000`;
@@ -149,6 +150,7 @@ function clickCard(i) {
         document.querySelectorAll('.card').forEach(card => card.style.border = '2px solid #fff');
         if (check('colour') && check('fill') && check('amount') && check('shape')) {
             document.getElementById('title').innerText = 'Good job thats a set!';
+            fitText();
             if (boardCards.length == 15) {
                 let toRemove = [];
                 for (let x = 0; x < boardCards.length; x++) {
@@ -198,11 +200,13 @@ function clickCard(i) {
             sayMistake(selectedCards[0].colour, selectedCards[1].colour, selectedCards[2].colour);
         } else {
             document.getElementById('title').innerText = 'Thats not a set';
+            fitText();
         }
         selectedCards = [];
         findSets();
         if (allCards.length == 0 && allSets.length == 0) {
             document.getElementById('title').innerText = 'Game Over! You found all the sets!';
+            fitText();
         }
     }
 }
@@ -213,10 +217,7 @@ function findSets() {
         for (let e = 0; e < boardCards.length; e++) {
             for (let t = 0; t < boardCards.length; t++) {
                 if (s < e && e < t) {
-                    if ((boardCards[s].colour !== boardCards[e].colour && boardCards[s].colour !== boardCards[t].colour && boardCards[e].colour !== boardCards[t].colour || boardCards[s].colour == boardCards[e].colour && boardCards[s].colour == boardCards[t].colour && boardCards[e].colour == boardCards[t].colour) &&
-                        (boardCards[s].fill !== boardCards[e].fill && boardCards[s].fill !== boardCards[t].fill && boardCards[e].fill !== boardCards[t].fill || boardCards[s].fill == boardCards[e].fill && boardCards[s].fill == boardCards[t].fill && boardCards[e].fill == boardCards[t].fill) &&
-                        (boardCards[s].amount !== boardCards[e].amount && boardCards[s].amount !== boardCards[t].amount && boardCards[e].amount !== boardCards[t].amount || boardCards[s].amount == boardCards[e].amount && boardCards[s].amount == boardCards[t].amount && boardCards[e].amount == boardCards[t].amount) &&
-                        (boardCards[s].shape !== boardCards[e].shape && boardCards[s].shape !== boardCards[t].shape && boardCards[e].shape !== boardCards[t].shape || boardCards[s].shape == boardCards[e].shape && boardCards[s].shape == boardCards[t].shape && boardCards[e].shape == boardCards[t].shape)) {
+                    if ((boardCards[s].colour !== boardCards[e].colour && boardCards[s].colour !== boardCards[t].colour && boardCards[e].colour !== boardCards[t].colour || boardCards[s].colour == boardCards[e].colour && boardCards[s].colour == boardCards[t].colour && boardCards[e].colour == boardCards[t].colour) && (boardCards[s].fill !== boardCards[e].fill && boardCards[s].fill !== boardCards[t].fill && boardCards[e].fill !== boardCards[t].fill || boardCards[s].fill == boardCards[e].fill && boardCards[s].fill == boardCards[t].fill && boardCards[e].fill == boardCards[t].fill) && (boardCards[s].amount !== boardCards[e].amount && boardCards[s].amount !== boardCards[t].amount && boardCards[e].amount !== boardCards[t].amount || boardCards[s].amount == boardCards[e].amount && boardCards[s].amount == boardCards[t].amount && boardCards[e].amount == boardCards[t].amount) && (boardCards[s].shape !== boardCards[e].shape && boardCards[s].shape !== boardCards[t].shape && boardCards[e].shape !== boardCards[t].shape || boardCards[s].shape == boardCards[e].shape && boardCards[s].shape == boardCards[t].shape && boardCards[e].shape == boardCards[t].shape)) {
                         allSets.push([s, e, t]);
                     }
                 }
@@ -232,6 +233,7 @@ function findSets() {
         } else {
             document.getElementById('title').innerText = 'There are no sets! Add more cards to continue.';
         }
+        fitText();
     }
 }
 
@@ -289,6 +291,7 @@ function addd3() {
     } else {
         document.getElementById('title').innerText = "You can't add any more";
     }
+    fitText();
 }
 
 function giveHint() {
@@ -298,11 +301,6 @@ function giveHint() {
         document.querySelectorAll('.card').forEach(card => card.style.border = '2px solid #fff');
         document.getElementById(`card${hintPlace}`).style.border = '2px solid #000';
         selectedCards.push(boardCards[hintPlace]);
-
-        document.getElementById(`card${hintPlace}`).style.boxShadow = `5px 5px 10px #4a4a4a, -5px -5px 10px #4a4a4a, 5px -5px 10px #4a4a4a, -5px 5px 10px #4a4a4a`;
-        setTimeout(() => {
-            document.getElementById(`card${hintPlace}`).style.boxShadow = '5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(0, 0, 0, 0.2), 5px -5px 10px rgba(0, 0, 0, 0.2), -5px 5px 10px rgba(0, 0, 0, 0.2)';
-        }, 1000);
     }
 }
 
@@ -314,4 +312,24 @@ function showAmount() {
     } else {
         document.getElementById('title').innerText = `There are ${allSets.length} sets`;
     }
+    fitText();
 }
+
+function alignSidebar() {
+    document.getElementById("sideBar").style.top = `${document.getElementById("cardContainer").getBoundingClientRect().top}px`;
+}
+function fitText() {
+    let fontSize = 40;
+    document.getElementById("title").style.fontSize = fontSize + "px";
+    document.getElementById("title").offsetWidth;
+
+    while (document.getElementById("title").offsetWidth > window.innerWidth * 0.95 && fontSize > 10) {
+        fontSize--;
+        document.getElementById("title").style.fontSize = fontSize + "px";
+    }
+}
+
+window.addEventListener('load', () => requestAnimationFrame(fitText));
+window.addEventListener('resize', fitText);
+window.addEventListener("resize", alignSidebar);
+window.addEventListener("load", alignSidebar);
